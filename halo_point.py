@@ -27,12 +27,11 @@ class HaloPoint:
 
 
 class Trajectory:
-    def __init__(self, ax, size, datarange, color_decay, color, edgecolor):
-        self.trajectory_main = [ax.plot([], [], c=color, linewidth=1, alpha=0, zorder=4)[0] for _ in
+    def __init__(self, ax, size_main, size_side, datarange, color_decay, color, edgecolor):
+        self.trajectory_main = [ax.plot([], [], c=color, linewidth=size_main, alpha=0, zorder=4)[0] for _ in
                                 range(datarange - 1, 0, -1)]
-        self.trajectory_side = [ax.plot([], [], c=edgecolor, linewidth=2, alpha=0, zorder=3)[0] for _ in
+        self.trajectory_side = [ax.plot([], [], c=edgecolor, linewidth=size_side, alpha=0, zorder=3)[0] for _ in
                                 range(datarange - 1, 0, -1)]
-        self.size = size
         self.color_decay = color_decay
         self.datarange = datarange
 
