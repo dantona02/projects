@@ -27,7 +27,7 @@ class HaloPoint:
 
 
 class Trajectory:
-    def __init__(self, ax, size_main, size_side, datarange, color_decay, color, edgecolor):
+    def __init__(self, ax, size_main, size_side, datarange, color_decay, decay_white, color, edgecolor):
         self.trajectory_main = [ax.plot([], [], c=color, linewidth=size_main, alpha=0, zorder=4)[0] for _ in
                                 range(datarange - 1, 0, -1)]
         self.trajectory_side = [ax.plot([], [], c=edgecolor, linewidth=size_side, alpha=0, zorder=3)[0] for _ in
@@ -35,6 +35,7 @@ class Trajectory:
         self.trajectory_top = [ax.plot([], [], c='white', linewidth=size_side, alpha=0, zorder=5)[0] for _ in
                                range(datarange - 1, 0, -1)]
         self.color_decay = color_decay
+        self.decay_white = decay_white
         self.datarange = datarange
 
     def set_data(self, x, y, frame):
@@ -63,7 +64,7 @@ class Trajectory:
                                                      subset_y[segment_start:segment_end + 1])
             self.trajectory_main[traj_index].set_alpha(alpha)
             self.trajectory_side[traj_index].set_alpha(alpha * 0.2)
-            self.trajectory_top[traj_index].set_alpha(np.exp(-15 * fraction) * (1 - fraction))
+            self.trajectory_top[traj_index].set_alpha(np.exp(-self.decay_white * fraction) * (1 - fraction))
 
     def get_artists(self):
         return self.trajectory_main + self.trajectory_side + self.trajectory_top
