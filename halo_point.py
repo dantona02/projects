@@ -1,19 +1,12 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[53]:
-
-
 import numpy as np
-
-
-# In[54]:
 
 
 class HaloPoint:
     def __init__(self, ax, mass, color_decay, color1, color2='white'):
-        self.halo_points_color1 = [ax.plot([], [], 'o', c=color1, markersize=0, alpha=0, markeredgecolor='none', zorder=3)[0] for _ in range(100)]
-        self.halo_points_white = [ax.plot([], [], 'o', c=color2, markersize=0, alpha=0, markeredgecolor='none', zorder=4)[0] for _ in range(100)]
+        self.halo_points_color1 = [ax.plot([], [], 'o', c=color1, markersize=0, alpha=0,
+                                           markeredgecolor='none', zorder=3)[0] for _ in range(100)]
+        self.halo_points_white = [ax.plot([], [], 'o', c=color2, markersize=0, alpha=0,
+                                          markeredgecolor='none', zorder=4)[0] for _ in range(100)]
         self.mass = mass
         self.color_decay = color_decay
         
@@ -31,4 +24,3 @@ class HaloPoint:
         
     def get_artists(self):
         return self.halo_points_color1 + self.halo_points_white
-
