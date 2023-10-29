@@ -32,6 +32,8 @@ class Trajectory:
                                 range(datarange - 1, 0, -1)]
         self.trajectory_side = [ax.plot([], [], c=edgecolor, linewidth=size_side, alpha=0, zorder=3)[0] for _ in
                                 range(datarange - 1, 0, -1)]
+        self.trajectory_top = [ax.plot([], [], c='white', linewidth=size_side, alpha=0, zorder=5)[0] for _ in
+                               range(datarange - 1, 0, -1)]
         self.color_decay = color_decay
         self.datarange = datarange
 
@@ -57,8 +59,11 @@ class Trajectory:
                                                       subset_y[segment_start:segment_end + 1])
             self.trajectory_side[traj_index].set_data(subset_x[segment_start:segment_end + 1],
                                                       subset_y[segment_start:segment_end + 1])
+            self.trajectory_top[traj_index].set_data(subset_x[segment_start:segment_end + 1],
+                                                     subset_y[segment_start:segment_end + 1])
             self.trajectory_main[traj_index].set_alpha(alpha)
             self.trajectory_side[traj_index].set_alpha(alpha * 0.2)
+            self.trajectory_top[traj_index].set_alpha(np.exp(-15 * fraction) * (1 - fraction))
 
     def get_artists(self):
-        return self.trajectory_main + self.trajectory_side
+        return self.trajectory_main + self.trajectory_side + self.trajectory_top
