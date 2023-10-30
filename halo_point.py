@@ -1,4 +1,6 @@
 import numpy as np
+from matplotlib.collections import LineCollection
+from matplotlib.colors import LinearSegmentedColormap
 
 
 class HaloPoint:
@@ -68,3 +70,41 @@ class Trajectory:
 
     def get_artists(self):
         return self.trajectory_main + self.trajectory_side + self.trajectory_top
+
+
+class TrajectoryOpt:
+    def __init__(self, ax, size_main, size_side, datarange, color1, color2):
+        self.datarange = datarange
+        self.colors = ['black', color1, color2, 'white']
+        custom_cmap = LinearSegmentedColormap.from_list("custom", self.colors, N=256)
+
+        self.line1 = LineCollection([], cmap=custom_cmap, linewidths=size_main, zorder=3)
+        self.line2 = LineCollection([], cmap=custom_cmap, linewidths=size_side, zorder=2, alpha=.4)
+        self.line3 = LineCollection([], cmap=custom_cmap, linewidths=size_side + .5, zorder=1, alpha=.2)
+        ax.add_collection(self.line1)
+        ax.add_collection(self.line2)
+        ax.add_collection(self.line3)
+
+    def set_data(self, x, y, frame):
+        start = max(0, frame - self.datarange)
+        end = frame
+        xs = x[start:end]
+        ys = y[start:end]
+
+        points = np.array([xs, ys]).T.reshape(-1, 1, 2)
+        segments = np.concatenate([points[:-2], points[1:-1], points[2:]], axis=1)
+        self.line1.set_segments(segments)
+        self.line2.set_segments(segments)
+        self.line3.set_segments(segments)
+
+        indices = np.linspace(start, end - 1, len(xs))  # color coding based on index
+        self.line1.set_array(indices)
+        self.line2.set_array(indices)
+        self.line3.set_array(indices)
+
+        self.line1.set_clim(start, end)  # setting boundaries for color based on index
+        self.line2.set_clim(start, end)
+        self.line3.set_clim(start, end)
+
+    def get_artists(self):
+        return self.line1, self.line2, self.line3
