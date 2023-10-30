@@ -107,4 +107,4 @@ class TrajectoryOpt:
         self.line3.set_clim(start, end)
 
     def get_artists(self):
-        return self.line1, self.line2, self.line3
+        return [self.line1, self.line2, self.line3]
