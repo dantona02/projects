@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib.collections import LineCollection
 from matplotlib.colors import LinearSegmentedColormap
 import sys
-from matplotlib.animation import FFMpegWriter
+from matplotlib.animation import FFMpegWriter, PillowWriter
 
 
 class HaloPoint:
@@ -113,6 +113,19 @@ class TrajectoryOpt:
 
 
 class ProgressWriter(FFMpegWriter):
+    def __init__(self, total_frames, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.total_frames = total_frames
+        self.frame_count = 0
+
+    def grab_frame(self, **savefig_kwargs):
+        super().grab_frame(**savefig_kwargs)
+        self.frame_count += 1
+        sys.stdout.write(f"\rExporting: {self.frame_count}/{self.total_frames} frames")
+        sys.stdout.flush()
+
+
+class ProgressPillowWriter(PillowWriter):
     def __init__(self, total_frames, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.total_frames = total_frames
