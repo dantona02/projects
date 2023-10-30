@@ -1,6 +1,8 @@
 import numpy as np
 from matplotlib.collections import LineCollection
 from matplotlib.colors import LinearSegmentedColormap
+import sys
+from matplotlib.animation import FFMpegWriter
 
 
 class HaloPoint:
@@ -11,19 +13,19 @@ class HaloPoint:
                                           markeredgecolor='none', zorder=7)[0] for _ in range(100)]
         self.mass = mass
         self.color_decay = color_decay
-        
+
     def set_data(self, x, y):
         radius = np.linspace(2, 20, 100)
         for index, i in enumerate(radius):
             self.halo_points_color1[index].set_data([x], [y])
             self.halo_points_white[index].set_data([x], [y])
-            
-            self.halo_points_color1[index].set_markersize(self.mass*i)
-            self.halo_points_color1[index].set_alpha(np.exp(-(i-2))**self.color_decay)
-            
-            self.halo_points_white[index].set_markersize(self.mass*i)
-            self.halo_points_white[index].set_alpha(np.exp(-(i-2))**1)
-        
+
+            self.halo_points_color1[index].set_markersize(self.mass * i)
+            self.halo_points_color1[index].set_alpha(np.exp(-(i - 2)) ** self.color_decay)
+
+            self.halo_points_white[index].set_markersize(self.mass * i)
+            self.halo_points_white[index].set_alpha(np.exp(-(i - 2)) ** 1)
+
     def get_artists(self):
         return self.halo_points_color1 + self.halo_points_white
 
@@ -108,3 +110,16 @@ class TrajectoryOpt:
 
     def get_artists(self):
         return [self.line1, self.line2, self.line3]
+
+
+class ProgressWriter(FFMpegWriter):
+    def __init__(self, total_frames, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.total_frames = total_frames
+        self.frame_count = 0
+
+    def grab_frame(self, **savefig_kwargs):
+        super().grab_frame(**savefig_kwargs)
+        self.frame_count += 1
+        sys.stdout.write(f"\rExporting: {self.frame_count}/{self.total_frames} frames")
+        sys.stdout.flush()
