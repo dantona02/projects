@@ -6,9 +6,9 @@ from matplotlib.colors import LinearSegmentedColormap
 class HaloPoint:
     def __init__(self, ax, mass, color_decay, color1, color2='white'):
         self.halo_points_color1 = [ax.plot([], [], 'o', c=color1, markersize=0, alpha=0,
-                                           markeredgecolor='none', zorder=3)[0] for _ in range(100)]
+                                           markeredgecolor='none', zorder=6)[0] for _ in range(100)]
         self.halo_points_white = [ax.plot([], [], 'o', c=color2, markersize=0, alpha=0,
-                                          markeredgecolor='none', zorder=4)[0] for _ in range(100)]
+                                          markeredgecolor='none', zorder=7)[0] for _ in range(100)]
         self.mass = mass
         self.color_decay = color_decay
         
