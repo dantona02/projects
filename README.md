@@ -15,4 +15,17 @@ There are a few custom classes implemented in the code that need a little bit of
   ```python
   halopoint = HaloPoint(ax, mass, color_decay, color1, color2='white')
   ```
-  - `ax` 
+  - `ax` corresponds to the current instance of `Axes` of the animation.
+  - `mass` is a parameter to change the the size of `halopoint` according to the mass, even if that doesn't reflect the physical reality.
+  - `color_decay` changes the decay of the halo. The larger the value of `color_decay`, the smaller the halo.
+  - `color1` sets the color of the point.
+  - `color2` should generally not be changed.
+  **It is very importand to note, that the `get_artists()` method returns a list of `Artists`, which must then be merged into one list to be returned by the update-function.
+    This applies to all other animation classes contained in this module.**
+    Here's an example how multiple artists can be implemented in the update-function:
+    ```python
+    artists = (point1.get_artists() +
+               point2.get_artists() +
+               point3.get_artists())
+    return artists
+    ```
