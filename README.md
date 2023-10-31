@@ -1,11 +1,11 @@
 # Simulation of the planar three-body problem
-This project simulates and visualizes the trajectories of the planar three-body-problem. The links to the corresponding papers the simualtion is based on, are provided in the [threebproblem.ipynp](https://github.com/dantona02/projects/blob/main/threebproblem.ipynb) notebook.
-All the underlying basic physical and mathematical concepts of the simualatio and the n can also be found in this notebook.
+This project simulates and visualizes the trajectories of the planar three-body problem. The links to the corresponding papers the simulation is based on, are provided in the [threebproblem.ipynp](https://github.com/dantona02/projects/blob/main/threebproblem.ipynb) notebook.
+All the underlying basic physical and mathematical concepts of the simulation can also be found in this notebook.
 
 ## Setup of the notebook
-The main purspose of this project is, to simualte a special cases of the three-body-problem with **zero angular momentum**. The papers introduces very specific inital conditions, even though a few parameters can be changed. Those are $m_3$, $v_1$ and $v_2$. All the other paramters are set according to the inital conditions.
+The main purpose of this project is, to simulate special cases of the three-body-problem with **zero angular momentum**. The papers introduce very specific initial conditions, even though a few parameters can be changed. Those are $m_3$, $v_1$ and $v_2$. All the other paramters are set according to the inital conditions.
 
-The four video files provided in this repsoitory show the simulation of three bodies with equal mass, i.e. $m_1=m_2=m_3=$, of the sun $m_{\text{sun}}=1.98892\cdot10^{30}\text{kg}$ and an initial distance of one astronomical unit ($L=1.495978707\cdot10^{11}\text{m}$) to each other, but different $v_1$ and $v_2$.
+The four video files provided in this repository show the simulation of three bodies with equal mass, i.e. $m_1=m_2=m_3=$ of the sun $m_{\text{sun}}=1.98892\cdot10^{30}\text{kg}$ and an initial distance of one astronomical unit ($L=1.495978707\cdot10^{11}\text{m}$) to each other, but different $v_1$ and $v_2$.
 One can change the parameters a little and try to find other stable periodic orbits.
 
 ## Module `animation`
@@ -20,7 +20,7 @@ There are a few custom classes implemented in the code that need a little bit of
   - `color_decay` changes the decay of the halo. The larger the value of `color_decay`, the smaller the halo.
   - `color1` sets the color of the point.
   - `color2` should generally not be changed.
-  **It is very importand to note, that the `get_artists()` method returns a list of `Artists`, which must then be merged into one list to be returned by the update-function.
+  **It is very important to note, that the `get_artists()` method returns a list of `Artists`, which must then be merged into one list to be returned by the update-function.
     This applies to all other animation classes contained in this module.**
     Here's an example how multiple artists can be implemented in the update-function:
     ```python
@@ -37,7 +37,7 @@ There are a few custom classes implemented in the code that need a little bit of
   ```
   - `ax` corresponds to the current instance of `Axes` of the animation.
   - `size_main` sets the width of the main trajectory.
-  - `size_side` is intendet to be slightly larger than `size_main` to achive some sort of 'fade-out' effect to the sides.
+  - `size_side` is intended to be slightly largerr than `size_main` to achive some sort of 'fade-out' effect to the sides.
   - `datarange` changes the effective length of the trajectory. It should always be set relative to the total datapoints but should not be too large.
   - `color1` sets the color towards the end of the trajectory. It is preferably set to a darker tone to achive a smooth fade out.
   - `color2` sets the color towards the beginning of the trajectory. It should be the same color like the parameter `color1` of the instance of `HaloPoint`.
@@ -52,9 +52,9 @@ There are a few custom classes implemented in the code that need a little bit of
   - `color` sets the color of main trajectory. It should equal the color of the halopoint.
   - `edgecolor` sets the color towards the side of the trajectory.
 - ### class `ProgressWriter`
-  This class uses an instance of `FFMpegWriter` and shows the progress of the saving process. An instane of `ProgressWriter` can be created analogously to one of `FFMpegWriter`.
+  This class uses an instance of `FFMpegWriter` and shows the progress of the saving process. An instance of `ProgressWriter` can be created analogously to one of `FFMpegWriter`.
 - ### class `ProgressPillowWriter`
-  This class uses an instance of `PillowWriter` and shows the progress of the saving process. An instane of `ProgressPillowWriter` can be created analogously to one of `PillowWriter`.
+  This class uses an instance of `PillowWriter` and shows the progress of the saving process. An instance of `ProgressPillowWriter` can be created analogously to one of `PillowWriter`.
 
 ## Required packages
-`matplotlib`, `numpy`, and `scipy`. The plots and animations in this notebook are processed by the backend-rednerer `QT5Agg`, as this ensures a much more convenient option to show plots and animations. 
+`matplotlib`, `numpy`, and `scipy`. The plots and animations in this notebook are processed by the backend-renderer `QT5Agg`, as this ensures a much more convenient option to show plots and animations. 
