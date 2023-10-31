@@ -51,5 +51,10 @@ There are a few custom classes implemented in the code that need a little bit of
   - `decay_white` changes the transparency of the white part at the beginning of the trajectory.
   - `color` sets the color of main trajectory. It should equal the color of the halopoint.
   - `edgecolor` sets the color towards the side of the trajectory.
+- ### class `ProgressWriter`
+  This class uses an instance of `FFMpegWriter` and shows the progress of the saving process. An instane of `ProgressWriter` can be created analogously to one of `FFMpegWriter`.
+- ### class `ProgressPillowWriter`
+  This class uses an instance of `PillowWriter` and shows the progress of the saving process. An instane of `ProgressPillowWriter` can be created analogously to one of `PillowWriter`.
 
-
+## Required packages
+`matplotlib`, `numpy`, and `scipy`. The plots and animations in this notebook are processed by the backend-rednerer `QT5Agg`, as this ensures a much more convenient option to show plots and animations. 
