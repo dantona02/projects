@@ -5,7 +5,7 @@ All the underlying basic physical and mathematical concepts of the simulation ca
 ## Setup of the notebook
 The main purpose of this project is to simulate special cases of the three-body problem with **zero angular momentum**. The papers introduce very specific initial conditions, even though a few parameters can be changed. Those are $m_3$, $v_1$ and $v_2$. All the other parameters are set according to the initial conditions.
 
-The four video files provided in this repository show the simulation of three bodies with equal mass, i.e. $m_1=m_2=m_3$ of the sun $m_{\text{sun}}=1.98892\cdot10^{30}\,\text{kg}$ and an initial distance of one astronomical unit ($L=1.495978707\cdot10^{11}\,\text{m}$) to each other, but different $v_1$ and $v_2$.
+The four video files provided in this repository show the simulation of three bodies with equal mass, i.e. $m_1=m_2=m_3$ of the sun $m_{\text{sun}}=1.98892\cdot10^{30}\,\text{kg}$ and an initial distance of one astronomical unit ($L=1.495978707\cdot10^{11}\;\text{m}$) to each other, but different $v_1$ and $v_2$.
 One can change the parameters a little and try to find other stable periodic orbits.
 
 ## Module `animation`
