@@ -9,7 +9,7 @@ The four video files provided in this repository show the simulation of three bo
 One can change the parameters a little and try to find other stable periodic orbits.
 
 ## Module `animation`
-There are a few custom classes implemented in the code that need a little bit of explanation. The module has the following classes:
+There are a few custom classes implemented in the code that need a little bit of explanation. The module [animation](https://github.com/dantona02/projects/blob/main/animation.py) has the following classes:
 - ### class `HaloPoint`
   An object of the class `HaloPoint` can be created like the following:
   ```python
