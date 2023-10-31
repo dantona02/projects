@@ -1,4 +1,4 @@
-# Simulation of a planar three-body problem
+# Simulation of the planar three-body problem
 This project simulates and visualizes the trajectories of the planar three-body-problem. The links to the corresponding papers the simualtion is based on, are provided in the [threebproblem.ipynp](https://github.com/dantona02/projects/blob/main/threebproblem.ipynb) notebook.
 All the underlying basic physical and mathematical concepts of the simualatio and the n can also be found in this notebook.
 
@@ -32,8 +32,17 @@ There are a few custom classes implemented in the code that need a little bit of
 - ### class `TrajectoryOpt`
   This is the recommended class for animating the trajectories of the three bodies, as this class is much more computational efficient than `Trajectory` due to its core, which is based on matplotlibs `LineCollection`.
   An object of the class `TrajectoryOpt` can be created like the following:
-  trajectoryOpt = TrajectoryOpt(ax, mass, color_decay, color1, color2='white')
+  ```python
+  trajectoryOpt = TrajectoryOpt(ax, size_main, size_side, datarange, color1, color2)
+  ```
+  - `ax` corresponds to the current instance of `Axes` of the animation.
+  - `size_main` sets the width of the main trajectory.
+  - `size_side` is intendet to be slightly larger than `size_main` to achive some sort of 'fade-out' effect to the sides.
+  - `datarange` changes the effective length of the trajectory. It should always be set relative to the total datapoints but should not be too large.
+  - `color1` sets the color towards the end of the trajectory. It is preferably set to a darker tone to achive a smooth fade out.
+  - `color2` sets the color towards the beginning of the trajectory. It should be the same color like the parameter `color1` of the instance of `HaloPoint`.
 
+  
 
 
   
