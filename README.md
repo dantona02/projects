@@ -30,7 +30,7 @@ There are a few custom classes implemented in the code that need a little bit of
     return artists
     ```
 - ### class `TrajectoryOpt`
-  This is the recommended class for animating the trajectories of the three bodies, as this class is much more computational efficient than `Trajectory` due to its core, which is based on matplotlibs `LineCollection`.
+  This is the recommended class for animating the trajectories of the three bodies, as this class is much more computational efficient than `Trajectory` due to its core, which is based on matplotlib's `LineCollection`.
   An object of the class `TrajectoryOpt` can be created like the following:
   ```python
   trajectoryOpt = TrajectoryOpt(ax, size_main, size_side, datarange, color1, color2)
@@ -41,8 +41,15 @@ There are a few custom classes implemented in the code that need a little bit of
   - `datarange` changes the effective length of the trajectory. It should always be set relative to the total datapoints but should not be too large.
   - `color1` sets the color towards the end of the trajectory. It is preferably set to a darker tone to achive a smooth fade out.
   - `color2` sets the color towards the beginning of the trajectory. It should be the same color like the parameter `color1` of the instance of `HaloPoint`.
+- ### class `Trajectory`
+  The core of this class is based on iterative visualisation and is less efficient. Creating an object works like the following:
+  ```python
+  trajectory = Trajectory(ax, size_main, size_side, datarange, color_decay, decay_white, color, edgecolor)
+  ```
+  - `ax`, `size_main`, `size_side` and `datarange` work like the parameters of `TrajectoryOpt`.
+  - `color_decay` changes the transparency towards the end of the trajectory.
+  - `decay_white` changes the transparency of the white part at the beginning of the trajectory.
+  - `color` sets the color of main trajectory. It should equal the color of the halopoint.
+  - `edgecolor` sets the color towards the side of the trajectory.
 
-  
 
-
-  
