@@ -75,14 +75,14 @@ class Trajectory:
 
 
 class TrajectoryOpt:
-    def __init__(self, ax, size_main, size_side, datarange, color1, color2):
+    def __init__(self, ax, size_main, size_side, datarange, color1, color2, alpha1, alpha2, alpha3):
         self.datarange = datarange
         self.colors = ['black', color1, color2, 'white']
         custom_cmap = LinearSegmentedColormap.from_list("custom", self.colors, N=256)
 
-        self.line1 = LineCollection([], cmap=custom_cmap, linewidths=size_main, zorder=3)
-        self.line2 = LineCollection([], cmap=custom_cmap, linewidths=size_side, zorder=2, alpha=.4)
-        self.line3 = LineCollection([], cmap=custom_cmap, linewidths=size_side + .5, zorder=1, alpha=.2)
+        self.line1 = LineCollection([], cmap=custom_cmap, linewidths=size_main, zorder=3, alpha=alpha1)
+        self.line2 = LineCollection([], cmap=custom_cmap, linewidths=size_side, zorder=2, alpha=alpha2) #.4
+        self.line3 = LineCollection([], cmap=custom_cmap, linewidths=size_side + .5, zorder=1, alpha=alpha3) #.2
         ax.add_collection(self.line1)
         ax.add_collection(self.line2)
         ax.add_collection(self.line3)
