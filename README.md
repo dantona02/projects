@@ -7,7 +7,10 @@ The main purpose of this project is to simulate special cases of the three-body 
 
 The video files provided in this repository show the simulation of three bodies with equal mass, i.e. $m_1=m_2=m_3$ of the sun $m_{\text{sun}}=1.98892\cdot10^{30}\ \text{kg}$ and an initial distance of one astronomical unit $\text{(}L=1.495978707\cdot10^{11}\ \text{m}\text{)}$ to each other, but different $v_1$ and $v_2$.
 One can change the parameters a little and try to find other stable periodic orbits. Videos of the simulation together with the corresponding angular momentum have been added.
-As also stated in the notebook itself, the green line in the animation shoes the total angular momentum of all three bodys together.
+As also stated in the notebook itself, the green line in the animation shows the total angular momentum of all three bodys together.
+
+Another nice solution shows the video file [montgomery.mp4](https://github.com/dantona02/projects/blob/main/montgomery.mp4). This solution, also with zero angular momentum, was first proven in 2000 by mathematicians Alain Chenciner and Richard Montgomery.
+The initial conditions used can be found in the paper "[A remarkable periodic solution of the three-body problem in the case of equal masses](https://arxiv.org/pdf/math/0011268.pdf)".
 
 ## Module `animation`
 There are a few custom classes implemented in the code that need a little bit of explanation. The module [animation](https://github.com/dantona02/projects/blob/main/animation.py) has the following classes:
